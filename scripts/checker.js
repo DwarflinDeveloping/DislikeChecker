@@ -8,7 +8,6 @@ function download_votes(video_id) {
 
 function download_metadata(video_url) {
     const url = get_url(video_url, base_url="https://noembed.com/embed?dataType=json&url=");
-    console.log(video_url)
     console.log("INFO: Starting metadata download of video '" + video_id + "' with url '" + url + "'...");
     return download(url);
 }
@@ -63,9 +62,22 @@ function check_dislikes() {
     outputs_container.style = "";
     video_id = get_video_id(input_url);
 
+    url = input_url
+    if ( url.startsWith("youtube.com") ) {
+        url = "https://www." + url
+    } else if ( url.startsWith("www") ) {
+        url = "https://" + url
+    }
+    if ( url.includes("youtube.com") == false ) {
+        alert("It looks like your URL is not leading to 'youtube.com'.\nPlease note that this website is made for YouTube videos.")
+        outputs_container.style = "display: none !important;";
+        information_container.style = ""
+        return
+    }
+
     try {
         votes = parse_json(download_votes(video_id));
-        metadata = parse_json(download_metadata(input_url))
+        metadata = parse_json(download_metadata(url))
     } catch (exception) {
         console.log("ERROR: Exception " + exception.name + " occurred while trying to download the votes of video '" + video_id + "'.");
 
@@ -74,6 +86,12 @@ function check_dislikes() {
         } else {
             alert("An error occurred while trying to download data.\nName: '" + exception.name + "'\nMessage: '" + exception.message + "'");
         }
+        outputs_container.style = "display: none !important;";
+        information_container.style = ""
+        return
+    }
+    if ( metadata["error"] == "no matching providers found" ) {
+        alert("It looks like your URL is not leading to a valid video.\nPlease make sure, your URL starts with 'http://youtube.com/' or 'https://www.youtube.com/'")
         outputs_container.style = "display: none !important;";
         information_container.style = ""
         return
