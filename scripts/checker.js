@@ -34,6 +34,16 @@ function get_video_id(url, id_separator="watch?v=") { return url.split(id_separa
 
 function get_thumbnail_url(video_id) { return "https://i.ytimg.com/vi/" + video_id + "/maxresdefault.jpg" }
 
+function autocorrect_url(input_url) {
+    url = input_url
+    if ( url.startsWith("youtube.com") ) {
+        url = "https://www." + url
+    } else if ( url.startsWith("www") ) {
+        url = "https://" + url
+    }
+    return url
+}
+
 function check_dislikes() {
     input_url = document.getElementById("url-input").value;
     if ( input_url == "" ) {
@@ -62,16 +72,11 @@ function check_dislikes() {
     outputs_container.style = "";
     video_id = get_video_id(input_url);
 
-    url = input_url
-    if ( url.startsWith("youtube.com") ) {
-        url = "https://www." + url
-    } else if ( url.startsWith("www") ) {
-        url = "https://" + url
-    }
+    url = autocorrect_url(input_url);
     if ( url.includes("youtube.com") == false ) {
-        alert("It looks like your URL is not leading to 'youtube.com'.\nPlease note that this website is made for YouTube videos.")
+        alert("It looks like your URL is not leading to 'youtube.com'.\nPlease note that this website is made for YouTube videos.");
         outputs_container.style = "display: none !important;";
-        information_container.style = ""
+        information_container.style = "";
         return
     }
 
@@ -93,7 +98,7 @@ function check_dislikes() {
     if ( metadata["error"] == "no matching providers found" ) {
         alert("It looks like your URL is not leading to a valid video.\nPlease make sure, your URL starts with 'http://youtube.com/' or 'https://www.youtube.com/'")
         outputs_container.style = "display: none !important;";
-        information_container.style = ""
+        information_container.style = "";
         return
     }
 
