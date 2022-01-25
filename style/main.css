@@ -1,0 +1,110 @@
+* {
+  font-family: 'Lato', sans-serif !important;
+}
+
+div.output-containers {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 10vw;
+  height: max-content;
+  border-radius: .5rem;
+  outline: 2.5px solid rgb(48, 52, 54) !important;
+  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+}
+
+div.output-containers > img {
+  width: 80%;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+div.output-containers > pre {
+  text-align: center;
+  font-size: 1vw;
+  font-family: 'Prompt', sans-serif !important;
+}
+
+div#input-container {
+  padding-bottom: 10px;
+}
+
+div#input-container > button {
+  margin-left: 10px;
+}
+
+div#footer {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+div#footer > p {
+  margin: 0px !important;
+}
+
+div#input-container > input#url-input {
+  width: 320px;
+}
+
+input#url-input, div#information-container > p#information-text {
+  font-family: 'Lato', sans-serif !important;
+}
+
+div#outputs-list, div#input-container, div#information-container, div#output-title-container,
+div#output-author-container, div#output-thumbnail-container {
+  display: flex;
+  justify-content: center;
+}
+
+div#output-thumbnail-container {
+  padding-top: 10px;
+}
+
+div#output-thumbnail-container > img#output-thumbnail {
+  padding: 10px;
+  outline: 2.5px solid rgb(48, 52, 54) !important;
+  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+  width: 25vw;
+}
+
+h1#output-title {
+  margin: 0px;
+}
+
+h2#output-author {
+  margin-top: 0px;
+  font-style: italic;
+}
+
+div.back {
+  margin: 10px;
+  padding: 10px;
+  outline: 1px solid rgb(48, 52, 54) !important;
+  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+  width: max-content;
+}
+
+#author-url, #title-url {
+  color: unset !important;
+}
+
+h1#output-title:hover, h2#output-author:hover {
+  color: rgb(50, 50, 50);
+}
+
+#author-url, #title-url, div.back > a#back-link {
+  text-decoration: none !important;
+}
+
+div#content {
+  padding: 25px;
+}
+
+div#content > h1 {
+  margin: 0px !important;
+}
+
+div#content > p#main-p {
+  margin-top: 10px;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube Dislike Checker</title>
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Prompt:wght@600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta property="og:title" content="YouTube Dislike Checker">
+    <meta property="og:description" content="YouTube Dislike Checker is a tool to look at the hidden dislike count of YouTube videos.">
+    <script src="scripts/checker.js"></script>
+    <script src="scripts/buttons.js"></script>
+  </head>
+  <body>
+    <div id="footer">
+      <p>
+        <a href="about.html">About</a> •
+        <a href="https://github.com/DwarflinDeveloping/DislikeChecker" target="_blank">GitHub</a> •
+        <a href="warranty.html">Warranty</a>
+      </p>
+    </div>
+    <div id="input-container">
+      <input id="url-input" placeholder="Input video URL here">
+      <button onclick="check_dislikes();">Get dislike count</button>
+    </div>
+    <div id="information-container">
+      <p id="information-text">Please enter a URL in the field above and press "Get dislike count".</p>
+    </div>
+    <div id="outputs" style="display: none !important;">
+      <div id="output-title-container">
+        <a href="" target="_blank" id="title-url"><h1 id="output-title">Loading...</h1></a>
+      </div>
+      <div id="output-author-container">
+        <a href="" target="_blank" id="author-url"><h2 id="output-author">Loading...</h2></a>
+      </div>
+      <div id="outputs-list">
+        <div class="output-containers">
+          <img src="assets/icons/views.svg">
+          <pre id="output-views">Loading...</pre>
+        </div>
+        <div class="output-containers">
+          <img src="assets/icons/likes.svg">
+          <pre id="output-likes">Loading...</pre>
+        </div>
+        <div class="output-containers">
+          <img src="assets/icons/dislikes.svg">
+          <pre id="output-dislikes">Loading...</pre>
+        </div>
+      </div>
+      <div id="output-thumbnail-container">
+        <img id="output-thumbnail" src="">
+      </div>
+    </div>
+    <div id="errors-container">
+      <div id="connection-error" class="error" hidden>
+        <p>A error occurred while trying to download the the votes.<br>
+        Please make sure you have a stable internet connection.<br>
+        Check the console for more information.</p>
+      </div>
+      <div id="limit-error" class="error" hidden>
+        <p>You have reached the limit of maximum requests.
+        The limits are:</p>
+        <ul>
+          <li>100 requests per minute</li>
+          <li>10000 requests per day</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
