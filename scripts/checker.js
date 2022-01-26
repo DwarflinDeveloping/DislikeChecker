@@ -90,6 +90,8 @@ function set_outputs(votes, metadata) {
     views_output = document.getElementById("output-views");
     likes_output = document.getElementById("output-likes");
     dislikes_output = document.getElementById("output-dislikes");
+    rating_output = document.getElementById("output-rating");
+    rating_percent_output = document.getElementById("output-rating-percent");
     title_output = document.getElementById("output-title");
     title_url_output = document.getElementById("title-url");
     author_output = document.getElementById("output-author");
@@ -99,9 +101,13 @@ function set_outputs(votes, metadata) {
     outputs_container.style = "";
     information_container.style = "display: none !important;";
 
+    rating_percent = get_rating_percent(votes["likes"], votes["dislikes"]);
+
     views_output.innerHTML = add_number_separator(votes["viewCount"]);
     likes_output.innerHTML = add_number_separator(votes["likes"]);
     dislikes_output.innerHTML = add_number_separator(votes["dislikes"]);
+    rating_percent_output.innerHTML = rating_percent;
+    rating_output.innerHTML = get_rating(rating_percent);
     title_output.innerHTML = metadata["title"];
     title_url_output.href = metadata["url"];
     author_output.innerHTML = metadata["author_name"];
@@ -149,6 +155,43 @@ function check_dislikes_input() {
     video_id = get_video_id(url);
     change_url_param('video_id', video_id);
 }
+
+function get_rating(rating_percent) {
+    ratings = {
+      "5": "Extremely miserable",
+      "10": "Very miserable",
+      "15": "Miserable",
+      "20": "Very bad",
+      "30": "Bad",
+      "40": "Slightly bad",
+      "50": "Mediocre",
+      "60": "Slightly good",
+      "70": "Good",
+      "80": "Very good",
+      "90": "Excellent",
+      "100": "Very excellent"
+    }
+
+    if ( rating_percent == 100 ) {
+        return "Completely positive"
+    } else if ( rating_percent == 0 ) {
+        return "Completely negative"
+    }
+
+    for ( rating in ratings ) {
+        console.log(rating)
+        console.log(rating_percent)
+        console.log()
+        if ( rating_percent < rating ) {
+            console.log("done!")
+            return ratings[rating]
+        } else {
+            continue
+        }
+    }
+}
+
+function get_rating_percent(like_count, dislike_count) { return Math.floor( ( ( like_count / ( like_count + dislike_count ) ) * 100 ) / 0.01 ) * 0.01 }
 
 function check_dislikes(url) {
     reset_output();

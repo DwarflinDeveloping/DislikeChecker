@@ -52,7 +52,8 @@ input#url-input, div#information-container > p#information-text {
 }
 
 div#outputs-list, div#input-container, div#information-container, div#output-title-container,
-div#output-author-container, div#output-thumbnail-container {
+div#output-author-container, div#output-thumbnail-container, div#output-rating-container, div#output-bottom-container,
+div#output-thumbnail-container {
   display: flex;
   justify-content: center;
 }
@@ -61,10 +62,15 @@ div#output-thumbnail-container {
   padding-top: 10px;
 }
 
-div#output-thumbnail-container > img#output-thumbnail {
+div#output-bottom-container > div {
+  border-radius: .5rem;
   padding: 10px;
+  margin-top: 10px;
   outline: 2.5px solid rgb(48, 52, 54) !important;
   background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+}
+
+div#output-thumbnail-container > img#output-thumbnail {
   width: 25vw;
 }
 
