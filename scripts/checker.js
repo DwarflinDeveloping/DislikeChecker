@@ -38,6 +38,8 @@ function get_thumbnail_url(video_id) { return "https://i.ytimg.com/vi/" + video_
 
 function change_url(url) { window.history.replaceState( {}, document.title, url ); }
 
+function add_number_separator(number) { return number.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"); }
+
 function change_url_param(key, value) {
     var url = new URL(document.documentURI);
     var url_params = url.searchParams;
@@ -97,9 +99,9 @@ function set_outputs(votes, metadata) {
     outputs_container.style = "";
     information_container.style = "display: none !important;";
 
-    views_output.innerHTML = votes["viewCount"];
-    likes_output.innerHTML = votes["likes"];
-    dislikes_output.innerHTML = votes["dislikes"];
+    views_output.innerHTML = add_number_separator(votes["viewCount"]);
+    likes_output.innerHTML = add_number_separator(votes["likes"]);
+    dislikes_output.innerHTML = add_number_separator(votes["dislikes"]);
     title_output.innerHTML = metadata["title"];
     title_url_output.href = metadata["url"];
     author_output.innerHTML = metadata["author_name"];
