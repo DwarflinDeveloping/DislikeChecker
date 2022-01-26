@@ -1,2 +1,2 @@
 # DislikeChecker
-An website that makes you possible to see the dislikes of a youtube video.
+DislikeChecker is a website that allows you to view the dislike count of a YouTube video.
