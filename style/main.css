@@ -76,7 +76,7 @@ div#output-thumbnail-container > img#output-thumbnail {
 
 div#output-rating-bar-container {
   background-color: red;
-  height: 2.5px;
+  height: 10px;
   width: 100%;
 }
 
