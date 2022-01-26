@@ -74,6 +74,17 @@ div#output-thumbnail-container > img#output-thumbnail {
   width: 25vw;
 }
 
+div#output-rating-bar-container {
+  background-color: red;
+  height: 2.5px;
+  width: 100%;
+}
+
+div#output-rating-bar-container > div#output-rating-bar {
+  background-color: green;
+  height: 100%;
+}
+
 h1#output-title {
   margin: 0px;
 }

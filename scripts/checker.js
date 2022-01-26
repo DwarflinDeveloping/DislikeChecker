@@ -99,6 +99,7 @@ function set_outputs(votes, metadata) {
     dislikes_output = document.getElementById("output-dislikes");
     rating_output = document.getElementById("output-rating");
     rating_percent_output = document.getElementById("output-rating-percent");
+    rating_bar_output = document.getElementById("output-rating-bar");
     title_output = document.getElementById("output-title");
     title_url_output = document.getElementById("title-url");
     author_output = document.getElementById("output-author");
@@ -115,6 +116,7 @@ function set_outputs(votes, metadata) {
     dislikes_output.innerHTML = add_number_separator(votes["dislikes"]);
     rating_percent_output.innerHTML = rating_percent;
     rating_output.innerHTML = get_rating(rating_percent);
+    rating_bar_output.style = "width: " + rating_percent + "%;";
     title_output.innerHTML = metadata["title"];
     title_url_output.href = metadata["url"];
     author_output.innerHTML = metadata["author_name"];
