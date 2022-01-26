@@ -51,15 +51,17 @@ function change_url_param(key, value) {
 }
 
 function autocorrect_url(input_url) {
-    url = input_url
-    if ( url.startsWith("youtube.com") ) {
-        url = "https://www." + url
+    url = input_url;
+    if ( url.includes("youtu.be") ) {
+        url = "https://www.youtube.com/watch?v=" + url.split("/").pop();
+    } else if ( url.startsWith("youtube.com") ) {
+        url = "https://www." + url;
     } else if ( url.startsWith("www") ) {
-        url = "https://" + url
+        url = "https://" + url;
     }
 
     if ( url.includes("&t=") ) {
-        url = url.split("&t=")[0]
+        url = url.split("&t=")[0];
     }
 
     return url
@@ -184,11 +186,7 @@ function get_rating(rating_percent) {
     }
 
     for ( rating in ratings ) {
-        console.log(rating)
-        console.log(rating_percent)
-        console.log()
         if ( rating_percent < rating ) {
-            console.log("done!")
             return ratings[rating]
         } else {
             continue
