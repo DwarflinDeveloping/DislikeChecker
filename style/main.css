@@ -8,8 +8,10 @@ div.output-containers {
   width: 10vw;
   height: max-content;
   border-radius: .5rem;
-  outline: 2.5px solid rgb(48, 52, 54) !important;
-  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+}
+
+button, input {
+  border-radius: .2rem;
 }
 
 div.output-containers > img {
@@ -66,8 +68,6 @@ div#output-bottom-container > div {
   border-radius: .5rem;
   padding: 10px;
   margin-top: 10px;
-  outline: 2.5px solid rgb(48, 52, 54) !important;
-  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
 }
 
 div#output-thumbnail-container > img#output-thumbnail {
@@ -76,7 +76,6 @@ div#output-thumbnail-container > img#output-thumbnail {
 
 div#output-rating-bar-container {
   background-color: red;
-  outline: 1px solid rgb(48, 52, 54) !important;
   height: 10px;
   width: 100%;
 }
@@ -102,17 +101,11 @@ h2#output-author {
 div.back {
   margin: 10px;
   padding: 10px;
-  outline: 1px solid rgb(48, 52, 54) !important;
-  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
   width: max-content;
 }
 
 #author-url, #title-url {
   color: unset !important;
-}
-
-h1#output-title:hover, h2#output-author:hover {
-  color: rgb(50, 50, 50);
 }
 
 #author-url, #title-url, div.back > a#back-link {
@@ -129,4 +122,22 @@ div#content > h1 {
 
 div#content > p#main-p {
   margin-top: 10px;
+}
+
+div#toggle-container {
+  position: fixed;
+  left: 25px;
+  bottom: 25px;
+}
+
+div#theme-toggle-container {
+  border-radius: .1rem;
+  width: 70px;
+  height: 70px;
+}
+
+div#theme-toggle-container > img#theme-toggle {
+  width: 50px;
+  height: 50px;
+  margin: 10px;
 }

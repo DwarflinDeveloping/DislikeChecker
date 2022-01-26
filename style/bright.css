@@ -1,0 +1,29 @@
+html {
+  background-color: white;
+}
+
+input, button {
+  color: black;
+  background-color: #f2f2f2;
+  border-color: #555;
+}
+
+p, pre, h1, h2, h3, a {
+  color: black;
+}
+
+div.back, div#theme-toggle-container, div.output-containers, div#output-bottom-container > div {
+  background: linear-gradient(rgb(229,230,228), rgb(236,236,235), rgb(242,243,242), rgb(249,249,248), rgb(255,255,255));
+}
+
+div.output-containers, div#theme-toggle-container, div#output-bottom-container > div {
+  outline: 2.5px solid rgb(48, 52, 54) !important;
+}
+
+div#output-rating-bar-container, div.back {
+  outline: 1px solid rgb(48, 52, 54) !important;
+}
+
+h1#output-title:hover, h2#output-author:hover {
+  color: rgb(50, 50, 50);
+}

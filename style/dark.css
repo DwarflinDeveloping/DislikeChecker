@@ -1,0 +1,29 @@
+html {
+  background-color: #181a1b;
+}
+
+input, button {
+  color: white;
+  background-color: #181a1b;
+  border-color: #555;
+}
+
+p, pre, h1, h2, h3, a {
+  color: white;
+}
+
+div.back, div#theme-toggle-container, div.output-containers, div#output-bottom-container > div {
+  background: linear-gradient(#222222, #232323);
+}
+
+div.output-containers, div#theme-toggle-container, div#output-bottom-container > div {
+  outline: 2.5px solid rgb(48, 52, 54) !important;
+}
+
+div#output-rating-bar-container, div.back {
+  outline: 1px solid rgb(48, 52, 54) !important;
+}
+
+h1#output-title:hover, h2#output-author:hover {
+  color: #999;
+}

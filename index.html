@@ -3,21 +3,28 @@
   <head>
     <title>YouTube Dislike Checker</title>
     <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link id="theme-import" rel="stylesheet" type="text/css" href="style/bright.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Prompt:wght@600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta property="og:title" content="YouTube Dislike Checker">
     <meta property="og:description" content="YouTube Dislike Checker is a tool to look at the hidden dislike count of YouTube videos.">
     <script src="scripts/checker.js"></script>
     <script src="scripts/url_params.js"></script>
+    <script src="scripts/themes.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  <body onload="params_init_check();">
+  <body onload="params_init_check(); init_theme();">
     <div id="footer">
       <p>
         <a href="about.html">About</a> •
         <a href="warranty.html">Warranty</a> •
         <a href="https://github.com/DwarflinDeveloping/DislikeChecker" target="_blank">GitHub</a>
       </p>
+    </div>
+    <div id="toggle-container">
+      <div id="theme-toggle-container">
+        <img id="theme-toggle" src="assets/bright/moon.svg" onclick="toggle_theme();">
+      </div>
     </div>
     <div id="input-container">
       <input id="url-input" placeholder="Input video URL here">
@@ -26,7 +33,7 @@
     <div id="information-container">
       <p id="information-text">Please enter a URL in the field above and press "Get dislike count".</p>
     </div>
-    <div id="outputs" style="display: none !important;">
+    <div id="outputs" style="">
       <div id="output-title-container">
         <a href="" target="_blank" id="title-url"><h1 id="output-title">Loading...</h1></a>
       </div>
@@ -35,15 +42,15 @@
       </div>
       <div id="outputs-list">
         <div class="output-containers">
-          <img src="assets/icons/views.svg">
+          <img id="icon-views" src="assets/bright/views.svg">
           <pre id="output-views">Loading...</pre>
         </div>
         <div class="output-containers">
-          <img src="assets/icons/likes.svg">
+          <img id="icon-likes" src="assets/bright/like.svg">
           <pre id="output-likes">Loading...</pre>
         </div>
         <div class="output-containers">
-          <img src="assets/icons/dislikes.svg">
+          <img id="icon-dislikes" src="assets/bright/dislike.svg">
           <pre id="output-dislikes">Loading...</pre>
         </div>
       </div>
