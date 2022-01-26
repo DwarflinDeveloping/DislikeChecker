@@ -8,8 +8,9 @@
     <meta property="og:title" content="YouTube Dislike Checker">
     <meta property="og:description" content="YouTube Dislike Checker is a tool to look at the hidden dislike count of YouTube videos.">
     <script src="scripts/checker.js"></script>
+    <script src="scripts/url_params.js"></script>
   </head>
-  <body>
+  <body onload="params_init_check();">
     <div id="footer">
       <p>
         <a href="about.html">About</a> •
@@ -19,7 +20,7 @@
     </div>
     <div id="input-container">
       <input id="url-input" placeholder="Input video URL here">
-      <button onclick="check_dislikes();">Get dislike count</button>
+      <button onclick="check_dislikes_input();">Get dislike count</button>
     </div>
     <div id="information-container">
       <p id="information-text">Please enter a URL in the field above and press "Get dislike count".</p>

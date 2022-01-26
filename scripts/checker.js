@@ -32,7 +32,21 @@ function parse_json(text) { return JSON.parse(text) }
 
 function get_video_id(url, id_separator="watch?v=") { return url.split(id_separator).pop() }
 
+function get_video_url(video_id, base_url="https://www.youtube.com/watch?v=") { return base_url + video_id }
+
 function get_thumbnail_url(video_id) { return "https://i.ytimg.com/vi/" + video_id + "/maxresdefault.jpg" }
+
+function change_url(url) { window.history.replaceState( {}, document.title, url ); }
+
+function change_url_param(key, value) {
+    var url = new URL(document.documentURI);
+    var url_params = url.searchParams;
+
+    url_params.set(key, value);
+    url.search = url_params.toString();
+
+    change_url(url.toString());
+}
 
 function autocorrect_url(input_url) {
     url = input_url
@@ -44,12 +58,7 @@ function autocorrect_url(input_url) {
     return url
 }
 
-function check_dislikes() {
-    input_url = document.getElementById("url-input").value;
-    if ( input_url == "" ) {
-        return
-    }
-
+function reset_output() {
     outputs_container = document.getElementById("outputs");
     information_container = document.getElementById("information-container");
     views_output = document.getElementById("output-views");
@@ -61,24 +70,88 @@ function check_dislikes() {
     author_url_output = document.getElementById("author-url");
     thumbnail_output = document.getElementById("output-thumbnail");
 
-    if ( outputs_container.style != "" ) {
-        views_output.innerHTML = "Loading...";
-        likes_output.innerHTML = "Loading...";
-        dislikes_output.innerHTML = "Loading...";
-    }
+    outputs_container.style = "display: none !important;";
+    information_container.style = "";
+    views_output.innerHTML = "Loading...";
+    likes_output.innerHTML = "Loading...";
+    dislikes_output.innerHTML = "Loading...";
+    title_output.innerHTML = "Loading...";
+    author_output.innerHTML = "Loading...";
+    title_url_output.href = "";
+    author_url_output.href = "";
+    thumbnail_output.src = "";
+}
 
-    if ( information_container.style.display == "" ) { information_container.style = "display: none !important;"; }
+function set_outputs(votes, metadata) {
+    outputs_container = document.getElementById("outputs");
+    information_container = document.getElementById("information-container");
+    views_output = document.getElementById("output-views");
+    likes_output = document.getElementById("output-likes");
+    dislikes_output = document.getElementById("output-dislikes");
+    title_output = document.getElementById("output-title");
+    title_url_output = document.getElementById("title-url");
+    author_output = document.getElementById("output-author");
+    author_url_output = document.getElementById("author-url");
+    thumbnail_output = document.getElementById("output-thumbnail");
 
     outputs_container.style = "";
-    video_id = get_video_id(input_url);
+    information_container.style = "display: none !important;";
+
+    views_output.innerHTML = votes["viewCount"];
+    likes_output.innerHTML = votes["likes"];
+    dislikes_output.innerHTML = votes["dislikes"];
+    title_output.innerHTML = metadata["title"];
+    title_url_output.href = metadata["url"];
+    author_output.innerHTML = metadata["author_name"];
+    author_url_output.href = metadata["author_url"];
+    thumbnail_output.src = get_thumbnail_url(video_id);
+}
+
+function handle_commands(input) {
+    if ( input == "hey" ) {
+        alert("hey!")
+        return 1
+    } else if ( input_url == "help") {
+        alert("Please enter a URL in the input field.");
+        return 1
+    } else if ( input_url == "about") {
+        window.open("about.html", "_self");
+        return 1
+    } else if ( input_url == "warranty") {
+        return
+    } else if ( input_url == "github") {
+        return
+    } else if ( input_url == "license") {
+        return
+    } else if ( input_url == "authors") {
+        return
+    }
+    return 0
+}
+
+function check_dislikes_input() {
+    input_url = document.getElementById("url-input").value;
+    if ( input_url == "" ) {
+        alert("Please enter a URL in the input field.");
+        return
+    } else if ( handle_commands(input_url) == 1 ) { return }
 
     url = autocorrect_url(input_url);
     if ( url.includes("youtube.com") == false ) {
         alert("It looks like your URL is not leading to 'youtube.com'.\nPlease note that this website is made for YouTube videos.");
-        outputs_container.style = "display: none !important;";
-        information_container.style = "";
         return
     }
+
+    check_dislikes(url);
+
+    video_id = get_video_id(url);
+    change_url_param('video_id', video_id);
+}
+
+function check_dislikes(url) {
+    reset_output();
+
+    video_id = get_video_id(url);
 
     try {
         votes = parse_json(download_votes(video_id));
@@ -91,27 +164,13 @@ function check_dislikes() {
         } else {
             alert("An error occurred while trying to download data.\nName: '" + exception.name + "'\nMessage: '" + exception.message + "'");
         }
-        outputs_container.style = "display: none !important;";
-        information_container.style = ""
         return
     }
+
     if ( metadata["error"] == "no matching providers found" ) {
         alert("It looks like your URL is not leading to a valid video.\nPlease make sure, your URL starts with 'http://youtube.com/' or 'https://www.youtube.com/'")
-        outputs_container.style = "display: none !important;";
-        information_container.style = "";
         return
     }
 
-    for ( element in document.getElementsByClassName("output") ) {
-        element.hidden = false;
-    }
-
-    views_output.innerHTML = votes["viewCount"];
-    likes_output.innerHTML = votes["likes"];
-    dislikes_output.innerHTML = votes["dislikes"];
-    title_output.innerHTML = metadata["title"];
-    title_url_output.href = metadata["url"];
-    author_output.innerHTML = metadata["author_name"];
-    author_url_output.href = metadata["author_url"];
-    thumbnail_output.src = get_thumbnail_url(video_id);
+    set_outputs(votes, metadata);
 }
