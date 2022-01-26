@@ -57,6 +57,11 @@ function autocorrect_url(input_url) {
     } else if ( url.startsWith("www") ) {
         url = "https://" + url
     }
+
+    if ( url.includes("&t=") ) {
+        url = url.split("&t=")[0]
+    }
+
     return url
 }
 
