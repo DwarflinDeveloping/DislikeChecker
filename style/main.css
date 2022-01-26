@@ -76,8 +76,13 @@ div#output-thumbnail-container > img#output-thumbnail {
 
 div#output-rating-bar-container {
   background-color: red;
+  outline: 1px solid rgb(48, 52, 54) !important;
   height: 10px;
   width: 100%;
+}
+
+div#output-rating-bar-container, div#output-rating-bar-container > div#output-rating-bar {
+  border-radius: .5rem;
 }
 
 div#output-rating-bar-container > div#output-rating-bar {
