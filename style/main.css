@@ -5,7 +5,7 @@
 div.output-containers {
   margin-left: 5px;
   margin-right: 5px;
-  width: 10vw;
+  width: 12.5%;
   height: max-content;
   border-radius: .5rem;
 }
@@ -23,7 +23,7 @@ div.output-containers > img {
 
 div.output-containers > pre {
   text-align: center;
-  font-size: 1vw;
+  font-size: 2vw;
   font-family: 'Prompt', sans-serif !important;
 }
 
