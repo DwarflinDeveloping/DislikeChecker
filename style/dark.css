@@ -1,5 +1,5 @@
 html {
-  background-color: #181a1b;
+  background: linear-gradient(#181a1b, #181a1c);
 }
 
 input, button {
@@ -13,7 +13,7 @@ p, pre, h1, h2, h3, a {
 }
 
 div.back, div#theme-toggle-container, div.output-containers, div#output-bottom-container > div {
-  background: linear-gradient(#222222, #232323);
+  background: linear-gradient(#181818, #191919);;
 }
 
 div.output-containers, div#theme-toggle-container, div#output-bottom-container > div {
