@@ -8,5 +8,5 @@ DislikeChecker is a website that allows you to view the dislike count of a YouTu
    - [x] support for youtu.be links
    - [ ] better parsing (maybe regex ?)
  - [ ] better design for mobile devices
- - [ ] dark theme (important)
+ - [x] dark theme (important)
  - [ ] localization
